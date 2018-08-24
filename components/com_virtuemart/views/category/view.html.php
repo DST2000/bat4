@@ -579,8 +579,11 @@ INNER JOIN #__virtuemart_product_categories as cat ON (pc.virtuemart_product_id=
 		if(!empty($this->categoryId)){
 			$q1 .= ' virtuemart_category_id="'.$this->categoryId.'" and';
 		}
-		$q1 .= ' searchable="1" and (field_type="S" or field_type="P") and c.published = 1 GROUP BY c.virtuemart_custom_id';
-
+		// {DST
+		//$q1 .= ' searchable="1" and (field_type="S" or field_type="P") and c.published = 1 GROUP BY c.virtuemart_custom_id';
+		$q1 .= ' searchable="1" and (field_type="S" or field_type="P" or field_type="I" or field_type="F") and c.published = 1 GROUP BY c.virtuemart_custom_id';
+		// }DST
+		
 		$db->setQuery($q1);
 		$this->selected = $db->loadObjectList();
 		//vmdebug('getSearchCustom '.str_replace('#__',$db->getPrefix(),$db->getQuery()),$this->selected);//,$this->categoryId,$this->selected);
@@ -588,7 +591,10 @@ INNER JOIN #__virtuemart_product_categories as cat ON (pc.virtuemart_product_id=
 			$app = JFactory::getApplication();
 			foreach ($this->selected as $selected) {
 				$valueOptions = array();
-				if($selected->field_type=="S") {
+				// {DST
+				//if($selected->field_type=="S") {
+				if( ($selected->field_type=="S")|| ($selected->field_type=="I") || $selected->field_type=="F" ) {
+				// }DST				
 
 					//if($selected->is_list) {
 						//if($selected->is_list == "1") {
