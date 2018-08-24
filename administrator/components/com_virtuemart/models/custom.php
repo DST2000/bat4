@@ -43,8 +43,14 @@ class VirtueMartModelCustom extends VmModel {
 
 	/** @return autorized Types of data **/
 	static function getCustomTypes () {
-
+		
+		// {DST
+//			'I'=>'COM_VIRTUEMART_CUSTOM_INT',
+//			'F'=>'COM_VIRTUEMART_CUSTOM_INT',
+		// }DST
 		return array('S' => 'COM_VIRTUEMART_CUSTOM_STRING',
+			'I'=>'COM_VIRTUEMART_CUSTOM_INT',
+			'F'=>'COM_VIRTUEMART_CUSTOM_FLOAT',
 			'P' => 'COM_VIRTUEMART_CUSTOM_PROPERTY',
 			'B' => 'COM_VIRTUEMART_CUSTOM_BOOLEAN',
 			'D' => 'COM_VIRTUEMART_DATE',

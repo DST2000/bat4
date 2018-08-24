@@ -645,6 +645,10 @@ class VirtueMartModelCustomfields extends VmModel {
 			/* string or integer */
 			case 'B':
 			case 'S':
+			// {DST
+			case 'I':
+			case 'F':
+			// }DST
 
 				if($field->is_list){
 					$options = array();
